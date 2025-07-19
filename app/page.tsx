@@ -39,7 +39,7 @@ const showcaseVideo = {
     title: "CINEMATIC SHOWREEL 2024",
     description:
       "A comprehensive showcase of my latest work featuring music videos, commercial films, and creative projects that demonstrate the full spectrum of cinematic storytelling.",
-    videoUrl: "videos/gc_edit.mp4",
+    videoUrl: "/videos/gc_edit.mp4",
     duration: "3:45",
     category: "Showreel",
 }
@@ -61,11 +61,11 @@ const showcaseVideo = {
             <source src="/videos/gc_edit.mp4" type="video/mp4" />
             {/* Fallback videos */}
             <source
-              src="videos/gc_edit.mp4"
+              src="/videos/gc_edit.mp4"
               type="video/mp4"
             />
             <source
-              src="videos/gc_edit.mp4"
+              src="/videos/gc_edit.mp4"
               type="video/webm"
             />
             Your browser does not support the video tag.
