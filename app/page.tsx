@@ -39,7 +39,7 @@ const showcaseVideo = {
     title: "CINEMATIC SHOWREEL 2024",
     description:
       "A comprehensive showcase of my latest work featuring music videos, commercial films, and creative projects that demonstrate the full spectrum of cinematic storytelling.",
-    videoUrl: "/videos/gc-edit.mp4",
+    videoUrl: "public/videos/gc-edit.mp4",
     duration: "3:45",
     category: "Showreel",
 }
@@ -58,7 +58,7 @@ const showcaseVideo = {
             className="w-full h-full object-cover opacity-90"
             poster="/placeholder.svg?height=1080&width=1920"
           >
-            <source src="/videos/gc_edit.mp4" type="video/mp4" />
+            <source src="public/videos/gc_edit.mp4" type="video/mp4" />
             {/* Fallback videos */}
             <source
               src="/public/videos/gc-edit.mp4"
