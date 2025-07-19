@@ -61,11 +61,11 @@ const showcaseVideo = {
             <source src="/videos/gc_edit.mp4" type="video/mp4" />
             {/* Fallback videos */}
             <source
-              src="/videos/gc_edit.mp4"
+              src="/public/videos/gc_edit.mp4"
               type="video/mp4"
             />
             <source
-              src="/videos/gc_edit.mp4"
+              src="/public/videos/gc_edit.mp4"
               type="video/webm"
             />
             Your browser does not support the video tag.
