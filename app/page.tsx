@@ -58,7 +58,7 @@ const showcaseVideo = {
             className="w-full h-full object-cover opacity-90"
             poster="/placeholder.svg?height=1080&width=1920"
           >
-            <source src="public/videos/gc_edit.mp4" type="video/mp4" />
+            <source src="/public/videos/gc-edit.mp4" type="video/mp4" />
             {/* Fallback videos */}
             <source
               src="/public/videos/gc-edit.mp4"
