@@ -35,14 +35,14 @@ export default function HomePage() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
 
-const showcaseVideo = {
+  const showcaseVideo = {
     title: "CINEMATIC SHOWREEL 2024",
     description:
       "A comprehensive showcase of my latest work featuring music videos, commercial films, and creative projects that demonstrate the full spectrum of cinematic storytelling.",
     videoUrl: "/videos/go-edit.mp4",
     duration: "3:45",
     category: "Showreel",
-}
+  }
 
   return (
     <div className="min-h-screen">
@@ -145,9 +145,9 @@ const showcaseVideo = {
       </section>
 
       {/* About Preview Section */}
-      <section className="section-clean container-spacing">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 grid-spacing-clean items-center">
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
             {/* Left: Image */}
             <ScrollReveal direction="left">
               <div className="relative">
@@ -166,29 +166,29 @@ const showcaseVideo = {
             </ScrollReveal>
 
             {/* Right: Content */}
-            <div className="space-y-4">
+            <div className="space-y-6 md:space-y-8">
               <ScrollReveal direction="right">
-                <h2 className="text-4xl md:text-6xl font-oswald font-bold tracking-wider content-spacing-small">
+                <h2 className="text-4xl md:text-6xl font-oswald font-bold tracking-wider">
                   CRAFTING VISUAL STORIES
                 </h2>
               </ScrollReveal>
 
               <ScrollReveal direction="right" delay={0.2}>
-                <p className="text-xl text-gray-300 font-playfair leading-relaxed element-spacing">
+                <p className="text-lg md:text-xl text-gray-300 font-playfair leading-relaxed">
                   With over 5 years of experience, I specialize in creating compelling visual narratives that resonate
                   with audiences and leave lasting impressions.
                 </p>
               </ScrollReveal>
 
               <ScrollReveal direction="right" delay={0.4}>
-                <p className="text-lg text-gray-400 leading-relaxed element-spacing-large">
+                <p className="text-base md:text-lg text-gray-400 leading-relaxed">
                   Every project combines technical expertise with artistic vision, transforming ideas into powerful
                   cinematic experiences that connect with viewers on an emotional level.
                 </p>
               </ScrollReveal>
 
               <ScrollReveal direction="right" delay={0.8}>
-                <div className="flex flex-col sm:flex-row gap-4 element-spacing-large">
+                <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <Link
                     href="/about"
                     className="inline-flex items-center px-8 py-4 bg-white text-black font-oswald tracking-wider hover:glow transition-all duration-300"
@@ -207,10 +207,10 @@ const showcaseVideo = {
               </ScrollReveal>
 
               <ScrollReveal direction="right" delay={1.0}>
-                <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/10">
+                <div className="grid grid-cols-3 gap-4 pt-8 border-t border-white/10">
                   {stats.map((stat, index) => (
                     <div key={index} className="text-center">
-                      <div className="text-3xl font-oswald font-bold mb-1 glow-text">{stat.number}</div>
+                      <div className="text-2xl md:text-3xl font-oswald font-bold mb-1 glow-text">{stat.number}</div>
                       <div className="text-gray-400 font-playfair text-sm">{stat.label}</div>
                     </div>
                   ))}
@@ -221,154 +221,154 @@ const showcaseVideo = {
         </div>
       </section>
 
-{/* Full Screen Video Showcase Section */}
-<section className="section-clean container-spacing bg-white/5">
-    <div className="max-w-7xl mx-auto">
-        <ScrollReveal>
-            <h2 className="text-4xl md:text-6xl font-oswald font-bold text-center content-spacing-small tracking-wider">
-                WATCH MY SHOWREEL
+      {/* Full Screen Video Showcase Section */}
+      <section className="py-16 md:py-24 bg-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <h2 className="text-4xl md:text-6xl font-oswald font-bold text-center tracking-wider">
+              WATCH MY SHOWREEL
             </h2>
-        </ScrollReveal>
+          </ScrollReveal>
 
-        <ScrollReveal delay={0.3}>
-            <p className="text-xl text-gray-300 font-playfair text-center content-spacing max-w-3xl mx-auto">
-                Experience the full spectrum of my cinematic work in this comprehensive showreel featuring music videos,
-                commercial films, and creative projects.
+          <ScrollReveal delay={0.3}>
+            <p className="text-lg md:text-xl text-gray-300 font-playfair text-center mt-6 max-w-3xl mx-auto">
+              Experience the full spectrum of my cinematic work in this comprehensive showreel featuring music videos,
+              commercial films, and creative projects.
             </p>
-        </ScrollReveal>
+          </ScrollReveal>
 
-        <ScrollReveal delay={0.6}>
+          <ScrollReveal delay={0.6}>
             <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="relative bg-gray-900 overflow-hidden group cursor-pointer max-w-6xl mx-auto element-spacing-large"
-                style={{ aspectRatio: "21/9" }}
-                onClick={() => setIsPlaying(true)}
-                data-cursor-hover
+              whileHover={{ scale: 1.02 }}
+              className="relative bg-gray-900 overflow-hidden group cursor-pointer max-w-6xl mx-auto mt-12"
+              style={{ aspectRatio: "21/9" }}
+              onClick={() => setIsPlaying(true)}
+              data-cursor-hover
             >
-                {/* Looping video background */}
-                <video
-                    src={showcaseVideo.videoUrl}
-                    loop
-                    muted
-                    autoPlay
-                    playsInline
-                    className="w-full h-full object-cover"
-                />
+              {/* Looping video background */}
+              <video
+                src={showcaseVideo.videoUrl}
+                loop
+                muted
+                autoPlay
+                playsInline
+                className="w-full h-full object-cover"
+              />
 
-                {/* Play Button Overlay - Only shows on hover */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm"
-                    >
-                        <Play className="w-12 h-12 text-white ml-1" />
-                    </motion.div>
-                </div>
-
-                {/* Film Grain Effect */}
-                <div className="absolute inset-0 film-grain pointer-events-none" />
-            </motion.div>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.9}>
-            <div className="text-center">
-                <Link
-                    href="/portfolio"
-                    className="inline-block px-8 py-4 border-2 border-white text-white font-oswald tracking-wider hover:bg-white hover:text-black transition-all duration-300"
-                    data-cursor-hover
+              {/* Play Button Overlay - Only shows on hover */}
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  className="w-16 h-16 md:w-24 md:h-24 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm"
                 >
-                    VIEW FULL PORTFOLIO
-                </Link>
-            </div>
-        </ScrollReveal>
-    </div>
+                  <Play className="w-8 h-8 md:w-12 md:h-12 text-white ml-1" />
+                </motion.div>
+              </div>
 
-    {/* Full Screen Video Player Modal */}
-    {isPlaying && (
-        <motion.div
+              {/* Film Grain Effect */}
+              <div className="absolute inset-0 film-grain pointer-events-none" />
+            </motion.div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.9}>
+            <div className="text-center mt-12">
+              <Link
+                href="/portfolio"
+                className="inline-block px-8 py-4 border-2 border-white text-white font-oswald tracking-wider hover:bg-white hover:text-black transition-all duration-300"
+                data-cursor-hover
+              >
+                VIEW FULL PORTFOLIO
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        {/* Full Screen Video Player Modal */}
+        {isPlaying && (
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="fixed inset-0 z-50 bg-black flex items-center justify-center"
             onClick={() => setIsPlaying(false)}
-        >
+          >
             <motion.div
-                initial={{ scale: 0.9 }}
-                animate={{ scale: 1 }}
-                className="relative w-full h-full"
-                onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              className="relative w-full h-full"
+              onClick={(e) => e.stopPropagation()}
             >
-                <video
-                    src={showcaseVideo.videoUrl}
-                    controls
-                    autoPlay
-                    loop
-                    muted={isMuted}
-                    className="w-full h-full object-cover"
-                />
+              <video
+                src={showcaseVideo.videoUrl}
+                controls
+                autoPlay
+                loop
+                muted={isMuted}
+                className="w-full h-full object-cover"
+              />
 
-                {/* Video Controls */}
-                <div className="absolute top-6 right-6 flex gap-3">
-                    <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        onClick={() => setIsMuted(!isMuted)}
-                        className="p-4 bg-black/80 rounded-full hover:bg-white hover:text-black transition-colors"
-                        data-cursor-hover
-                    >
-                        {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
-                    </motion.button>
-                    <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        onClick={() => setIsPlaying(false)}
-                        className="p-4 bg-black/80 rounded-full hover:bg-white hover:text-black transition-colors text-white text-xl font-bold"
-                        data-cursor-hover
-                    >
-                        ✕
-                    </motion.button>
-                </div>
+              {/* Video Controls */}
+              <div className="absolute top-6 right-6 flex gap-3">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  onClick={() => setIsMuted(!isMuted)}
+                  className="p-4 bg-black/80 rounded-full hover:bg-white hover:text-black transition-colors"
+                  data-cursor-hover
+                >
+                  {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  onClick={() => setIsPlaying(false)}
+                  className="p-4 bg-black/80 rounded-full hover:bg-white hover:text-black transition-colors text-white text-xl font-bold"
+                  data-cursor-hover
+                >
+                  ✕
+                </motion.button>
+              </div>
 
-                {/* Video Info */}
-                <div className="absolute bottom-6 left-6 right-6 bg-black/80 p-6 rounded">
-                    <h3 className="text-2xl md:text-3xl font-oswald font-bold tracking-wider text-white mb-3">
-                        {showcaseVideo.title}
-                    </h3>
-                    <p className="text-gray-300 font-playfair text-lg">{showcaseVideo.description}</p>
-                </div>
+              {/* Video Info */}
+              <div className="absolute bottom-6 left-6 right-6 bg-black/80 p-6 rounded">
+                <h3 className="text-2xl md:text-3xl font-oswald font-bold tracking-wider text-white mb-3">
+                  {showcaseVideo.title}
+                </h3>
+                <p className="text-gray-300 font-playfair text-lg">{showcaseVideo.description}</p>
+              </div>
             </motion.div>
-        </motion.div>
-    )}
-</section>
+          </motion.div>
+        )}
+      </section>
 
       {/* Expertise Section */}
-      <section className="section-clean container-spacing">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-6xl font-oswald font-bold text-center content-spacing-small tracking-wider">
+            <h2 className="text-4xl md:text-6xl font-oswald font-bold text-center tracking-wider">
               MY EXPERTISE
             </h2>
           </ScrollReveal>
 
           <ScrollReveal delay={0.3}>
-            <p className="text-xl text-gray-300 font-playfair text-center content-spacing max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-300 font-playfair text-center mt-6 max-w-3xl mx-auto">
               Specializing in creating compelling visual narratives across multiple mediums, each project is crafted
               with meticulous attention to detail and artistic vision.
             </p>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-3 grid-spacing-clean">
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
             {expertise.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 0.2}>
                 <motion.div whileHover={{ y: -10 }} className="group" data-cursor-hover>
-                  <div className="aspect-[4/3] bg-gray-900 overflow-hidden element-spacing">
+                  <div className="aspect-[4/3] bg-gray-900 overflow-hidden">
                     <img
                       src={item.thumbnail || "/placeholder.svg"}
                       alt={item.title}
                       className="w-full h-full object-cover image-hover group-hover:scale-105 transition-all duration-500"
                     />
                   </div>
-                  <h3 className="text-2xl font-oswald font-bold element-spacing tracking-wider group-hover:glow-text transition-all duration-300">
+                  <h3 className="text-2xl font-oswald font-bold mt-6 tracking-wider group-hover:glow-text transition-all duration-300">
                     {item.title}
                   </h3>
-                  <p className="text-gray-400 font-playfair leading-relaxed">{item.description}</p>
+                  <p className="text-gray-400 font-playfair leading-relaxed mt-2">{item.description}</p>
                 </motion.div>
               </ScrollReveal>
             ))}
@@ -377,15 +377,15 @@ const showcaseVideo = {
       </section>
 
       {/* Process Section */}
-      <section className="section-clean container-spacing bg-white/5">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 md:py-24 bg-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-6xl font-oswald font-bold text-center content-spacing tracking-wider">
+            <h2 className="text-4xl md:text-6xl font-oswald font-bold text-center tracking-wider">
               MY PROCESS
             </h2>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 grid-spacing-clean">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             {[
               {
                 step: "01",
@@ -413,12 +413,12 @@ const showcaseVideo = {
               <ScrollReveal key={item.step} delay={index * 0.2}>
                 <motion.div
                   whileHover={{ y: -5 }}
-                  className="text-center p-6 border border-white/10 hover:border-white/30 transition-all duration-300"
+                  className="text-center p-6 border border-white/10 hover:border-white/30 transition-all duration-300 h-full"
                   data-cursor-hover
                 >
-                  <div className="text-6xl font-oswald font-bold text-white/20 element-spacing">{item.step}</div>
-                  <h3 className="text-xl font-oswald font-bold element-spacing tracking-wider">{item.title}</h3>
-                  <p className="text-gray-400 font-playfair leading-relaxed">{item.description}</p>
+                  <div className="text-5xl md:text-6xl font-oswald font-bold text-white/20">{item.step}</div>
+                  <h3 className="text-xl font-oswald font-bold mt-4 tracking-wider">{item.title}</h3>
+                  <p className="text-gray-400 font-playfair leading-relaxed mt-2">{item.description}</p>
                 </motion.div>
               </ScrollReveal>
             ))}
@@ -427,32 +427,32 @@ const showcaseVideo = {
       </section>
 
       {/* Call to Action */}
-      <section className="section-clean container-spacing">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-16 md:py-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl font-oswald font-bold content-spacing-small tracking-wider">
+            <h2 className="text-3xl md:text-5xl font-oswald font-bold tracking-wider">
               READY TO CREATE SOMETHING EXTRAORDINARY?
             </h2>
           </ScrollReveal>
 
           <ScrollReveal delay={0.3}>
-            <p className="text-xl text-gray-300 content-spacing font-playfair">
+            <p className="text-lg md:text-xl text-gray-300 mt-6 font-playfair">
               Let's bring your vision to life with cinematic storytelling that captivates and inspires your audience.
             </p>
           </ScrollReveal>
 
           <ScrollReveal delay={0.6}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link
                 href="/contact"
-                className="inline-block px-12 py-4 bg-white text-black font-oswald tracking-wider hover:glow transition-all duration-300"
+                className="inline-block px-8 py-4 bg-white text-black font-oswald tracking-wider hover:glow transition-all duration-300"
                 data-cursor-hover
               >
                 START YOUR PROJECT
               </Link>
               <Link
                 href="/services"
-                className="inline-block px-12 py-4 border-2 border-white text-white font-oswald tracking-wider hover:bg-white hover:text-black transition-all duration-300"
+                className="inline-block px-8 py-4 border-2 border-white text-white font-oswald tracking-wider hover:bg-white hover:text-black transition-all duration-300"
                 data-cursor-hover
               >
                 VIEW SERVICES

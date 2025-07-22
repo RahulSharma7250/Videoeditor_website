@@ -108,16 +108,19 @@ const projects = [
   },
 ]
 
+
 const featuredProjects = projects.slice(0, 3)
 
 export default function PortfolioPage() {
   const [activeCategory, setActiveCategory] = useState("All")
-  type Project = typeof projects[number]
+  // type Project = typeof projects[number]; // Removed duplicate type definition
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   const filteredProjects = activeCategory === "All" 
     ? projects 
     : projects.filter(project => project.category === activeCategory)
+
+  type Project = typeof projects[number];
 
   const handleProjectClick = (project: Project) => {
     if (project.youtubeUrl) {
@@ -129,34 +132,18 @@ export default function PortfolioPage() {
 
   return (
     <div className="min-h-screen bg-black text-white pt-20">
-      {/* Header */}
+      {/* Header - Removed initial animations */}
       <section className="py-20 px-6 md:px-12 lg:px-16">
         <div className="max-w-7xl mx-auto text-center">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-5xl md:text-7xl font-bold tracking-wider mb-8"
-          >
+          <h1 className="text-5xl md:text-7xl font-bold tracking-wider mb-8">
             PORTFOLIO
-          </motion.h1>
+          </h1>
           
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl text-gray-300 max-w-3xl mx-auto mb-8"
-          >
-            A curated collection of cinematic stories, each crafted with passion and precision to capture the essence
-            of every moment and create lasting impact.
-          </motion.p>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            A curated collection of cinematic stories, each crafted with passion and precision.
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-4"
-          >
+          <div className="flex flex-wrap justify-center gap-4">
             <div className="flex items-center gap-2 px-4 py-2 border border-white/30">
               <Eye className="w-4 h-4" />
               <span className="text-sm tracking-wider">10M+ VIEWS</span>
@@ -165,30 +152,21 @@ export default function PortfolioPage() {
               <Play className="w-4 h-4" />
               <span className="text-sm tracking-wider">400+ PROJECTS</span>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Featured Projects */}
+      {/* Featured Projects - Simplified animations */}
       <section className="py-20 px-6 md:px-12 lg:px-16 bg-white/5">
         <div className="max-w-7xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold text-center mb-16 tracking-wider"
-          >
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 tracking-wider">
             FEATURED WORK
-          </motion.h2>
+          </h2>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {featuredProjects.map((project, index) => (
-              <motion.div
+            {featuredProjects.map((project) => (
+              <div
                 key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
                 className="group cursor-pointer"
                 onClick={() => handleProjectClick(project)}
               >
@@ -231,23 +209,18 @@ export default function PortfolioPage() {
                     ))}
                   </div>
                 )}
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Category Filter */}
-      <motion.section 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="px-6 md:px-12 lg:px-16 mb-12"
-      >
+      <section className="px-6 md:px-12 lg:px-16 mb-12">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap justify-center gap-4">
             {categories.map((category) => (
-              <motion.button
+              <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
                 className={`px-6 py-3 tracking-wider transition-all duration-300 ${
@@ -255,74 +228,59 @@ export default function PortfolioPage() {
                     ? "bg-white text-black"
                     : "border border-white/30 text-white hover:border-white/60"
                 }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
                 {category}
-              </motion.button>
+              </button>
             ))}
           </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* All Projects Grid */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="px-6 md:px-12 lg:px-16 pb-20"
-      >
+      {/* All Projects Grid - Simplified animations */}
+      <section className="px-6 md:px-12 lg:px-16 pb-20">
         <div className="max-w-7xl mx-auto">
-          <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatePresence>
-              {filteredProjects.map((project) => (
-                <motion.div
-                  key={project.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.5 }}
-                  whileHover={{ y: -5 }}
-                  className="group cursor-pointer"
-                  onClick={() => handleProjectClick(project)}
-                >
-                  <div className="relative aspect-video bg-gray-900 overflow-hidden mb-4">
-                    <img
-                      src={project.thumbnail}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:grayscale transition-all duration-300"
-                    />
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      {project.youtubeUrl ? (
-                        <ExternalLink className="w-12 h-12 text-white" />
-                      ) : (
-                        <Play className="w-12 h-12 text-white" />
-                      )}
-                    </div>
-                    <div className="absolute top-2 right-2 px-2 py-1 bg-black/80 text-xs tracking-wider">
-                      {project.category}
-                    </div>
-                    {project.youtubeUrl && (
-                      <div className="absolute top-2 left-2 px-2 py-1 bg-red-600 text-xs tracking-wider">
-                        YT
-                      </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProjects.map((project) => (
+              <div
+                key={project.id}
+                className="group cursor-pointer"
+                onClick={() => handleProjectClick(project)}
+              >
+                <div className="relative aspect-video bg-gray-900 overflow-hidden mb-4">
+                  <img
+                    src={project.thumbnail}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:grayscale transition-all duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    {project.youtubeUrl ? (
+                      <ExternalLink className="w-12 h-12 text-white" />
+                    ) : (
+                      <Play className="w-12 h-12 text-white" />
                     )}
                   </div>
+                  <div className="absolute top-2 right-2 px-2 py-1 bg-black/80 text-xs tracking-wider">
+                    {project.category}
+                  </div>
+                  {project.youtubeUrl && (
+                    <div className="absolute top-2 left-2 px-2 py-1 bg-red-600 text-xs tracking-wider">
+                      YT
+                    </div>
+                  )}
+                </div>
 
-                  <h3 className="text-lg font-bold mb-1 tracking-wider group-hover:text-white transition-all duration-300">
-                    {project.title}
-                  </h3>
+                <h3 className="text-lg font-bold mb-1 tracking-wider group-hover:text-white transition-all duration-300">
+                  {project.title}
+                </h3>
 
-                  <p className="text-gray-400 text-xs">{project.client}</p>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+                <p className="text-gray-400 text-xs">{project.client}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* Project Modal */}
+      {/* Project Modal - Kept essential animations */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -333,9 +291,9 @@ export default function PortfolioPage() {
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
               className="bg-black border border-white/20 max-w-5xl w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
@@ -365,21 +323,21 @@ export default function PortfolioPage() {
                         </span>
                       </div> */}
 
-                      {selectedProject.awards.length > 0 && (
+                      {/* {selectedProject.awards.length > 0 && (
                         <div className="mb-6">
                           <h4 className="text-sm tracking-wider text-gray-400 mb-3">
                             AWARDS & RECOGNITION
                           </h4>
-                          {/* <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-2">
                             {selectedProject.awards.map((award, idx) => (
                               <span key={idx} className="px-3 py-1 bg-white/10 text-sm tracking-wider">
                                 <Award className="w-4 h-4 inline mr-2" />
                                 {award}
                               </span>
                             ))}
-                          </div> */}
+                          </div>
                         </div>
-                      )}
+                      )} */}
 
                       <div className="flex gap-4">
                         <button
